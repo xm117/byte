@@ -130,14 +130,11 @@ def convert_expression(expression):
     """
     # Load unit database
     _, units_data = parse.readfile("Unit_database.csv")
-    
-    # Parse the expression
-    parsed_expr = parse.parse(expression)
-    grouped_expr = group_exponents(parsed_expr)
-    if not parsed_expr:
-        return "Error parsing expression"
-    
+ 
     try:
+        parsed_expr = parse.parse(expression)
+        grouped_expr = group_exponents(parsed_expr)
+
         # Calculate base units
         base_units = calculate_base_units(grouped_expr, units_data)
         
